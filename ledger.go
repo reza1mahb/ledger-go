@@ -72,7 +72,7 @@ func FindLedger() (*Ledger, error) {
 
 	for _, d := range devices {
 		deviceFound := d.UsagePage == UsagePageLedger
-		deviceFound = deviceFound || (d.Product == "Nano S" && d.Interface == 0)
+		deviceFound = deviceFound || (d.Interface == 0 && (d.Product == "Nano S" || d.Product == "Nano X" ) )
 
 		if deviceFound {
 			device, err := d.Open()
